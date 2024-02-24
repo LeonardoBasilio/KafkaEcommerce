@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-# KafkaEcommerce
+Este projeto é de estudos de kafka e aplicações de microserviços, rodando com conceito de docker
 
-Docker
-
-
-Kafka
-
-
-Java
- s 
-=======
-# KafkaEcommerce
->>>>>>> e35f537d82dac884b988d33e59fce0be67da5311
+ s
