@@ -1,1 +1,9 @@
 # KafkaEcommerce
+
+Docker
+
+
+Kafka
+
+
+Java
