@@ -1,0 +1,4 @@
+FROM confluentinc/cp-zookeeper:latest
+
+# Criação do diretório /app/data/zookeeper
+RUN mkdir -p /app/data/zookeeper
