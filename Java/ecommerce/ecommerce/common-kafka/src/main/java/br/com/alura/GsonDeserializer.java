@@ -1,5 +1,6 @@
 package br.com.alura;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import org.apache.kafka.common.serialization.Deserializer;
@@ -15,7 +16,11 @@ public class GsonDeserializer<T> implements Deserializer<T> {
 
     @Override
     public void configure(Map<String, ?> configs, boolean isKey) {
-       String typeName = String.valueOf(configs.get(TYPE_CONFIG));
+       Object typeConfig = configs.get(TYPE_CONFIG);
+       if(typeConfig == null){
+           throw new IllegalStateException("Type for deserialization was not configured.");
+       }
+       String typeName = typeConfig.toString();
        try {
          this.type = (Class<T>) Class.forName(typeName);
     } catch (ClassNotFoundException e) {
@@ -27,7 +32,10 @@ public class GsonDeserializer<T> implements Deserializer<T> {
 
     @Override
     public T deserialize(String s, byte[] bytes) {
-        return gson.fromJson(new String(bytes), type);
+        if(bytes == null){
+            return null;
+        }
+        return gson.fromJson(new String(bytes, StandardCharsets.UTF_8), type);
     }
 
 
